@@ -9,11 +9,18 @@ main/
 ├        ├──  images/
 ├        └── annotations/
 ├            ├──  list.txt
-├           ├──  test.txt
+├            ├──  test.txt
 ├            ├──  trainval.txt
 ├            ├──  trimaps/
 ├            └──  xmls/
+├   └── dataset_project_3/
+├        ├──  cifar-10/
+├            ├──  cifar-32/
+├            └──  cifar-224/
+├        └── food-101/
 ├── models/
+├   ├── models_project_1.py
+├   ├── models_project_3.py
 ├── utils/
 ├── weights/
 ├── demo_project_1.ipynb
