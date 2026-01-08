@@ -15,9 +15,11 @@ main/
 ├            └──  xmls/
 ├   └── dataset_project_3/
 ├        ├──  cifar-10/
-├            ├──  cifar-32/
-├            └──  cifar-224/
+├            ├──  cifar-10-batches-py/
+├            └──  cifar-10-python-tar-gz/
 ├        └── food-101/
+├            ├──  food-101/
+├            └──  food-101.tar.gz/
 ├── models/
 ├   ├── models_project_1.py
 ├   ├── models_project_3.py
