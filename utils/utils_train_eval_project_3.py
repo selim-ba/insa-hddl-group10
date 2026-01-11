@@ -55,7 +55,6 @@ def train_one_epoch(model, loader, optimizer, criterion, device):
 
     return running_loss / n_batches, running_acc / n_batches, epoch_time, peak_mem
 
-
 @torch.no_grad()
 def evaluate(model, loader, criterion, device, return_preds=False):
     model.eval()
@@ -110,8 +109,14 @@ def train_model(
     )
     model = model.to(device)
 
-    criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
+    criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
+    #optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
+
+    # For ViT on Food-101
+    optimizer = torch.optim.AdamW(model.parameters(), lr=lr,weight_decay=0.05)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
+
+
 
     # History (only what you actually use / plot)
     history = {
@@ -138,6 +143,9 @@ def train_model(
             model, val_loader, criterion, device
         )
 
+        scheduler.step() # for ViT on Food-101
+        current_lr = optimizer.param_groups[0]["lr"]
+
         history["train_loss"].append(tr_loss)
         history["train_acc"].append(tr_acc)
         history["val_loss"].append(va_loss)
@@ -154,6 +162,7 @@ def train_model(
             va_loss=f"{va_loss:.3f}",
             va_acc=f"{va_acc:.3f}",
             sec=f"{ep_time:.0f}",
+            lr=f"{current_lr:.2e}",
         )
 
         if va_acc > best_val_acc:
@@ -202,7 +211,8 @@ def train_model(
         model=model,
         history=history,
         metrics=metrics,
-        config={"epochs": epochs, "lr": lr, "device": device.type},
+        #config={"epochs": epochs, "lr": lr, "device": device.type},
+        config={"epochs": epochs, "lr": lr, "wd": 0.05, "scheduler": "cosine", "device": device.type}, # for ViT on Food-101
     )
 
     print("\nSaved best checkpoint to:", saved_to)

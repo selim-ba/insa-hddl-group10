@@ -11,7 +11,7 @@ class Custom_CNN(nn.Module):
         self.conv3 = nn.Conv2d(64, 128, kernel_size=3, padding=1)
 
         self.pool = nn.MaxPool2d(2, 2)
-        self.gap = nn.AdaptiveAvgPool2d((1, 1))   # <-- key change
+        self.gap = nn.AdaptiveAvgPool2d((1, 1))   
         self.dropout = nn.Dropout(0.2)
 
         self.fc1 = nn.Linear(128, 128)
