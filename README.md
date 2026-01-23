@@ -112,7 +112,7 @@ main/
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | CIFAR-10 | Vision Transformers | CrossEntropyLoss | AdamW | 3e-4 | 30 | 30 | 0.75 | 0.75 | 0.749 | 0.747 | 0.748 |
 | FOOD-101 | Vision Transformers (v1) | CrossEntropyLoss | AdamW | 3e-4 | 30 | 25 | 0.398 | 0.398 | 0.442 | 0.393 | 0.437 |
-| FOOD-101 | Vision Transformers (v2) | CrossEntropyLoss(label_smoothing) | AdamW | 3e-4 | 30 | 30 | 0.424| 0.424 | 0.471 | 0.418 | 0.465 |
+| FOOD-101 | Vision Transformers (v2) | CrossEntropyLoss(label_smoothing) | AdamW | 3e-4 | 30 | 30 | 0.424 | 0.424 | 0.471 | 0.418 | 0.465 |
 | FOOD-101 | Vision Transformers (v3) | CrossEntropyLoss | AdamW (lr_scheduling) | 3e-4 | 30 | 29 | 0.419 | 0.419 | 0.476 | 0.413 | 0.470 |
 
 4. **Comparison**
