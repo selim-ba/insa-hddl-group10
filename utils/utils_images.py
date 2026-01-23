@@ -29,7 +29,6 @@ def show_image_mask_bbox(class_id,df):
         print("Warning: image and mask sizes differ:",
               img_arr.shape[:2], ann_arr.shape[:2])
 
-    #Contour 
     contour = img_arr.copy()
     contour[ann_arr == 3] = [0, 255, 0] # we highlight the contour
     has_xml = not pd.isna(row["xml_path"])
@@ -38,6 +37,7 @@ def show_image_mask_bbox(class_id,df):
     print(f"Showing: {row['class_id']}")
 
     fig, ax = plt.subplots(1, n_panels, figsize=(5 * n_panels, 5))
+
     # Original image
     ax[0].imshow(img)
     ax[0].set_title(row["class_id"])
@@ -53,7 +53,7 @@ def show_image_mask_bbox(class_id,df):
     ax[2].set_title("Contour")
     ax[2].axis("off")
 
-    # Bounding box (if the .xml file exists)
+    # Bounding box (when available)
     if has_xml:
         x_min = int(row["bb_xmin"])
         y_min = int(row["bb_ymin"])
@@ -118,7 +118,6 @@ def show_random_classif_predictions(model, dataset, device, class_names, num_ima
 
     indices = random.sample(range(len(dataset)), num_images)
 
-    # Adapt grid size for visualization (e.g., square root)
     grid_size = int(num_images ** 0.5)
     plt.figure(figsize=(grid_size * 4, grid_size * 4))
 
@@ -137,7 +136,6 @@ def show_random_classif_predictions(model, dataset, device, class_names, num_ima
         plt.imshow(img_vis)
         plt.axis("off")
 
-        # Compose prediction probabilities string for all classes
         prob_str = ", ".join([f"P_{name}={probs[j]:.2f}" for j, name in enumerate(class_names)])
 
         pred_name = class_names[pred]
@@ -167,7 +165,6 @@ def show_random_classif_predictions_topk(
 
     indices = random.sample(range(len(dataset)), num_images)
 
-    # compute grid size more robustly
     grid_size = int(np.ceil(num_images ** 0.5))
     plt.figure(figsize=(grid_size * 4, grid_size * 4))
 
@@ -225,7 +222,6 @@ def predict_image_for_multiclass(model, img_path, transform, device="cpu"):
 
 def study_most_confused_breeds(cm, label_map, top_k=10):
 
-    # Normalize rows 
     cm_normalized = cm.astype(float) / cm.sum(axis=1, keepdims=True)
 
     pairs = []
@@ -238,10 +234,9 @@ def study_most_confused_breeds(cm, label_map, top_k=10):
                 pred_label = label_map[j] if not isinstance(label_map, dict) else label_map[j]
                 pairs.append((true_label, pred_label, cm_normalized[i, j]))
 
-    # Sorts confusion
     confusion_pairs = sorted(pairs, key=lambda x: x[2], reverse=True)
 
-    # Print of most confused pairs
+    # most confused pairs
     print(f"\nTop {top_k} most confused class pairs:")
     for true_label, pred_label, rate in confusion_pairs[:top_k]:
         print(f"{true_label} → {pred_label}: {rate:.2f}")
@@ -257,8 +252,8 @@ def plot_misclassified_pair(
     transform,
     device,
     n_samples=5,
-    label_col="breed_idx",   # <-- default: your multiclass label column
-    path_col="img_path",     # <-- in case this differs too
+    label_col="breed_idx",  
+    path_col="img_path",    
 ):
     model.eval()
     misclassified = []
@@ -363,7 +358,7 @@ def visualize_segmentation_predictions(model, loader, device, num_images=5):
 def visualize_topk_by_metric(
     model,
     dataset,         
-    df_joined,       # joined dataframe containing metrics + metadata
+    df_joined,      
     device,
     metric="pet_dice",
     k=6,

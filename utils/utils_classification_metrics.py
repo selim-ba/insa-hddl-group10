@@ -83,7 +83,7 @@ def classification_metrics_multiclass(y_true, y_prob, class_names=None):
         
     y_pred = np.argmax(y_prob, axis=1)
 
-    # Confusion matrix & classification report
+    # conf matrix
     cm = confusion_matrix(y_true, y_pred)
 
     report = classification_report(
@@ -107,7 +107,7 @@ def classification_metrics_multiclass(y_true, y_prob, class_names=None):
     except ValueError:
         roc_auc_macro_ovr = None
 
-    # PR curves & AP per class
+    # PR curves, AP per class
     precision = {}
     recall = {}
     pr_thresholds = {}

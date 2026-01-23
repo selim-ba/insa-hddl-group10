@@ -25,6 +25,7 @@ main/
 ├   ├── models_project_3.py
 ├── utils/
 ├── weights/
+├── images/
 ├── demo_project_1.ipynb
 ├── demo_project_2.ipynb
 ├── demo_project_3.ipynb
@@ -86,7 +87,34 @@ main/
 5. **Conclusion**
 
 ## Project 2 : Conditional VAE
+[Acess to demo_project_2](https://github.com/selim-ba/insa-hddl-group10/blob/main/demo_project_2.ipynb)
+
 
 
 
 ## Project 3 : Classification : CNN vs ViT
+[Acess to demo_project_3](https://github.com/selim-ba/insa-hddl-group10/blob/main/demo_project_3.ipynb)
+
+1. **Datasets**
+- CIFAR-10 & FOOD-101
+
+2. **Convolutional Neural Networks**
+| Dataset  | Model     | Epochs | Best Epoch | Best Val Acc | Final Val Acc | Final Test Acc | Final Val Macro-F1 | Final Test Macro-F1 |
+| -------- | --------- | ------ | ---------- | ------------ | ------------- | -------------- | ------------------ | ------------------- |
+| CIFAR-10 | CNN_V1    | 30     | 27         | 0.579        | 0.579         | 0.579          | 0.576              | 0.575               |
+| CIFAR-10 | CNN_V2    | 30     | 29         | 0.682        | 0.682         | 0.684          | 0.678              | 0.681               |
+| FOOD-101 | CNN_V2    | 30     | 29         | 0.457        | 0.457         | 0.509          | 0.449              | 0.500               |
+| CIFAR-10 | ResNet-18 | 30     | 30         | 0.624        | 0.624         | 0.629          | 0.623              | 0.630               |
+| FOOD-101 | ResNet-18 | 30     | 27         | 0.572        | 0.572         | 0.633          | 0.573              | 0.633               |
+
+3. **Vision Transformers**
+| Dataset | Model | Criterion | Optimizer | Learning Rate | Epochs | Best Epoch | Best Val Acc | Final Val Acc | Final Test Acc | Final Val Macro-F1 | Final Test Macro-F1 |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| CIFAR-10 | Vision Transformers | CrossEntropyLoss | AdamW | 3e-4 | 30 | 30 | 0.75 | 0.75 | 0.749 | 0.747 | 0.748 |
+| FOOD-101 | Vision Transformers (v1) | CrossEntropyLoss | AdamW | 3e-4 | 30 | 25 | 0.398 | 0.398 | 0.442 | 0.393 | 0.437 |
+| FOOD-101 | Vision Transformers (v2) | CrossEntropyLoss(label_smoothing) | AdamW | 3e-4 | 30 | 30 | 0.424| 0.424 | 0.471 | 0.418 | 0.465 |
+| FOOD-101 | Vision Transformers (v3) | CrossEntropyLoss | AdamW (lr_scheduling) | 3e-4| 30 | 29 | 0.419 | 0.419 | 0.476 | 0.413 | 0.470 |
+
+4. **Comparison**
+
+5. **Conclusion**

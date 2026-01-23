@@ -131,7 +131,7 @@ def join_metrics_with_test_df(test_df: pd.DataFrame, metrics_df: pd.DataFrame):
     Joins on class_id. Assumes test_df has class_id, breed_name, species_name.
     """
     df_joined = test_df.merge(metrics_df, on="class_id", how="inner")
-    # Quick sanity check
+    # sanity check
     if len(df_joined) != len(test_df):
         print(f"[Warn] Joined rows: {len(df_joined)} vs test_df rows: {len(test_df)} "
               f"(some class_id mismatches?)")

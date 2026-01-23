@@ -113,7 +113,6 @@ def train_model(
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
 
-    # History (only what you actually use / plot)
     history = {
         "train_loss": [], "train_acc": [],
         "val_loss": [], "val_acc": [],
@@ -147,7 +146,6 @@ def train_model(
         train_peak_mem_bytes = max(train_peak_mem_bytes, int(tr_mem))
         val_peak_mem_bytes = max(val_peak_mem_bytes, int(va_mem))
 
-        # Clean tqdm update instead of prints
         pbar.set_postfix(
             tr_loss=f"{tr_loss:.3f}",
             tr_acc=f"{tr_acc:.3f}",
@@ -166,7 +164,7 @@ def train_model(
     if best_state is not None:
         model.load_state_dict(best_state)
 
-    # Final metrics (macro-F1) on val and test using BEST weights
+    # Final metrics (macro-F1) on val and test
     val_loss, val_acc, val_mem, y_true_val, y_pred_val = evaluate(
         model, val_loader, criterion, device, return_preds=True
     )
@@ -232,7 +230,6 @@ def train_model_resnet(
     optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=momentum, weight_decay=weight_decay)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=30, gamma=0.1)
 
-    # History (only what you actually use / plot)
     history = {
         "train_loss": [], "train_acc": [],
         "val_loss": [], "val_acc": [],
@@ -266,7 +263,6 @@ def train_model_resnet(
         train_peak_mem_bytes = max(train_peak_mem_bytes, int(tr_mem))
         val_peak_mem_bytes = max(val_peak_mem_bytes, int(va_mem))
 
-        # Clean tqdm update instead of prints
         pbar.set_postfix(
             tr_loss=f"{tr_loss:.3f}",
             tr_acc=f"{tr_acc:.3f}",
@@ -288,7 +284,7 @@ def train_model_resnet(
     if best_state is not None:
         model.load_state_dict(best_state)
 
-    # Final metrics (macro-F1) on val and test using BEST weights
+    # Final metrics (macro-F1) on val and test
     val_loss, val_acc, val_mem, y_true_val, y_pred_val = evaluate(
         model, val_loader, criterion, device, return_preds=True
     )
