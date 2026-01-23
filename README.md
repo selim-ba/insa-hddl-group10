@@ -1,4 +1,6 @@
-# INSA Project - HDDL
+# INSA Project - HDDL - Group 10
+
+Group members :  Selim Ben Abdallah, Paola De Truchis, Eduardo De Jesus Zancanaro Garcia, and Edda Iveland
 
 ## Repository structure
 
