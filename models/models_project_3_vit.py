@@ -52,11 +52,6 @@ class TransformerBlock(nn.Module):
 
 
 class ViTTiny(nn.Module):
-    """
-    Minimal ViT for 224x224.
-    Patch embedding via Conv2d, attention via nn.MultiheadAttention.
-    """
-
     def __init__(
         self,
         num_classes,
