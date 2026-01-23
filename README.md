@@ -16,7 +16,7 @@ main/
 ├            ├──  trimaps/
 ├            └──  xmls/
 ├   └── dataset_project_3/
-├        ├──  cifar-10/
+├       └── cifar-10/
 ├            ├──  cifar-10-batches-py/
 ├            └──  cifar-10-python-tar-gz/
 ├        └── food-101/
@@ -24,14 +24,13 @@ main/
 ├            └──  food-101.tar.gz/
 ├── models/
 ├   ├── models_project_1.py
-├   ├── models_project_3.py
+├   └──  models_project_3.py
 ├── utils/
 ├── weights/
 ├── images/
 ├── demo_project_1.ipynb
 ├── demo_project_2.ipynb
-├── demo_project_3.ipynb
-└── requirements.txt
+└──  demo_project_3.ipynb
 ```
 
 
