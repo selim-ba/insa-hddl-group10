@@ -80,7 +80,7 @@ def show_image_mask_bbox(class_id,df):
 
 def show_9_samples(df,random_state_value):
     sample_nine = df.sample(9,random_state=random_state_value)
-    plt.figure(figsize=(14, 14))
+    plt.figure(figsize=(10, 10))
     for i, (class_id, row) in enumerate(sample_nine.iterrows(), start=1):
 
         img = Image.open(row["img_path"]).convert("RGB")
@@ -332,7 +332,7 @@ def visualize_segmentation_predictions(model, loader, device, num_images=5):
                 gt_np   = decode_segmentation_mask(gt)
                 pred_np = decode_segmentation_mask(pred)
 
-                plt.figure(figsize=(12, 4))
+                plt.figure(figsize=(8, 4)) #was 12,4
 
                 plt.subplot(1, 3, 1)
                 plt.imshow(img_np)
@@ -403,7 +403,7 @@ def visualize_topk_by_metric(
                 f"border_dice={row['border_dice']:.3f}")
 
 
-        plt.figure(figsize=(12, 4))
+        plt.figure(figsize=(8, 4)) #was 12,4
         plt.suptitle(title, y=1.02)
 
         plt.subplot(1, 3, 1); plt.imshow(img_np);  plt.axis("off"); plt.title("Input")

@@ -156,7 +156,7 @@ def plot_accuracy(history):
     plt.show()
 
 def plot_confusion_matrix(cm, class_names, title="Confusion Matrix"):
-    plt.figure(figsize=(12,12))
+    plt.figure(figsize=(12,12)) #was 12,12
     sns.heatmap(
         cm,
         annot=True,
