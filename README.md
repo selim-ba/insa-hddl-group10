@@ -89,8 +89,22 @@ main/
 ## Project 2 : Conditional VAE
 [Acess to demo_project_2](https://github.com/selim-ba/insa-hddl-group10/blob/main/demo_project_2.ipynb)
 
+We explored the litterature on Conditional Variational Auto-Encoders (CVAEs), and implemented convolutional CVAEs in order to conditionally generate new images corresponding to a given class. We implemented three different architectures: one naive and dysfunctional, and two credible ones with conditioning performed at different locations. We then fine-tuned the hyper-parameters of both these models, minimizing validation loss. Finally, we studied and displayed the latent space of the channel-learnt-enconding model, confirming, as it is found in the litterature, that CVAEs do not need KL terms in their loss functions. This is because these models do not need to learn to distinguish regions in the latent space in between classes.
 
+1. **Introduction to auto-encoders, variational auto-encoders, and conditional variational auto-encoders.**
+- Auto-encoders
+- Variational auto-encoders
+- Conditional variational auto-encoders
 
+2. **The idea in non-convolutional CVAE, and why we don't do it the same way for CVAEs**
+- Architectures to be tested
+- Training these models
+- Visualizing the models
+- Validating hyperparameters: choice of hidden dimension.
+
+3. **Training the models specifically for image generation**
+
+4. **Conclusion**
 
 ## Project 3 : Classification : CNN vs ViT
 [Acess to demo_project_3](https://github.com/selim-ba/insa-hddl-group10/blob/main/demo_project_3.ipynb)
