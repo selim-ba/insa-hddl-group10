@@ -99,6 +99,7 @@ main/
 - CIFAR-10 & FOOD-101
 
 2. **Convolutional Neural Networks**
+
 | Dataset  | Model     | Epochs | Best Epoch | Best Val Acc | Final Val Acc | Final Test Acc | Final Val Macro-F1 | Final Test Macro-F1 |
 | -------- | --------- | ------ | ---------- | ------------ | ------------- | -------------- | ------------------ | ------------------- |
 | CIFAR-10 | CNN_V1    | 30     | 27         | 0.579        | 0.579         | 0.579          | 0.576              | 0.575               |
@@ -108,6 +109,7 @@ main/
 | FOOD-101 | ResNet-18 | 30     | 27         | 0.572        | 0.572         | 0.633          | 0.573              | 0.633               |
 
 3. **Vision Transformers**
+
 | Dataset | Model | Criterion | Optimizer | Learning Rate | Epochs | Best Epoch | Best Val Acc | Final Val Acc | Final Test Acc | Final Val Macro-F1 | Final Test Macro-F1 |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | CIFAR-10 | Vision Transformers | CrossEntropyLoss | AdamW | 3e-4 | 30 | 30 | 0.75 | 0.75 | 0.749 | 0.747 | 0.748 |
